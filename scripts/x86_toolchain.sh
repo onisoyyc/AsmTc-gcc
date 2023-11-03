@@ -63,6 +63,11 @@ while [[ $# -gt 0 ]]; do
                         shift # past argument
                         shift # past value
                         ;;
+                -G|--gcc) # added the gcc argument
+                        GCC=True
+                        shift 
+                        shift
+                        ;;
                 -*|--*)
                         echo "Unknown option $1"
                         exit 1
