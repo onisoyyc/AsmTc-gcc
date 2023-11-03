@@ -181,3 +181,21 @@ if [ "$GDB" == "True" ]; then
         gdb "${gdb_params[@]}" $OUTPUT_FILE
 
 fi
+
+if [ "$GCC" == "True" ]; then # add gcc [inputfile] -o [outputfile] 
+
+        echo "starting GCC..."
+        echo ""                 # tell user how to compile 32-bit programs
+        echo ""
+
+        if [ "$VERBOSE" == "True" ]; then # add option for verbose gcc output
+
+                gcc -v $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
+        
+        elif [ "$BITS" == "False" ]; then # add option for x64 compilation
+
+                gcc $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
+        
+        elif [ "$BITS" == "False" ]; then #add option for x32 compilation
+
+                gcc -m32 $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
