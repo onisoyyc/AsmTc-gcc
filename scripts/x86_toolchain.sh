@@ -30,6 +30,7 @@ BITS=False
 QEMU=False
 BREAK="_start"
 RUN=False
+GCC=False # add gcc in positional_args
 while [[ $# -gt 0 ]]; do
         case $1 in
                 -g|--gdb)
