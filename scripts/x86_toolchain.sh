@@ -90,7 +90,7 @@ if [ "$OUTPUT_FILE" == "" ]; then
         OUTPUT_FILE=${1%.*}
 fi
 
-if [ "$VERBOSE" == "True" ]; then
+if [ "$VERBOSE" == "True" ]; then # add the gcc arguments into verbose output
         echo "Arguments being set:"
         echo "  GDB = ${GDB}"
         echo "  RUN = ${RUN}"
@@ -100,7 +100,7 @@ if [ "$VERBOSE" == "True" ]; then
         echo "  Output File = $OUTPUT_FILE"
         echo "  Verbose = $VERBOSE"
         echo "  64 bit mode = $BITS" 
-        echo ""
+        echo "  GCC compiler = ${GCC}"
 
         echo "NASM started..."
 
