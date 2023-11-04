@@ -197,7 +197,9 @@ fi
 if [ "$GCC" == "True" ]; then # add gcc [inputfile] -o [outputfile] 
 
         echo "starting GCC..."
-        echo "For 32-bit compilation"                 # tell user how to compile 32-bit programs
+        echo "For 32-bit compilation first install gcc-multilib:"   # tell user how to compile 32-bit programs
+        echo "sudo apt-get install gcc-multilib"
+        echo "Visit: https://www.geeksforgeeks.org/compile-32-bit-program-64-bit-gcc-c-c/ for more information."
         echo ""
 
         if [ "$VERBOSE" == "True" ]; then # add option for verbose gcc output
@@ -211,6 +213,7 @@ if [ "$GCC" == "True" ]; then # add gcc [inputfile] -o [outputfile]
         elif [ "$BITS" == "False" ]; then # add option for x32 compilation
 
                 gcc -m32 $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
+
 
 
 fi
