@@ -17,7 +17,9 @@ if [ $# -lt 1 ]; then
         echo "-q | --qemu                   Run executable in QEMU emulator. This will execute the program."
         echo "-64| --x86-64                 Compile for 64bit (x86-64) system."
         echo "-o | --output <filename>      Output filename."
-        echo "-G | --gcc                    use GCC compiler" # this option enables gcc compiler
+        echo "-G | --gcc                    Use GCC compiler" # this option enables gcc compiler
+        echo "-S | --assembly-code          Output assembly (.s) file" #this option enables output of assembly code from a C file
+        echo "-C | --machine-code           Output object(.o) file"      #this option will allow the user to get object code from a C file
 
         exit 1
 fi
@@ -31,6 +33,8 @@ QEMU=False
 BREAK="_start"
 RUN=False
 GCC=False # add gcc in positional_args
+ASM=FALSE 
+OBJ=FALSE
 while [[ $# -gt 0 ]]; do
         case $1 in
                 -g|--gdb)
@@ -66,6 +70,15 @@ while [[ $# -gt 0 ]]; do
                 -G|--gcc) # add gcc argument
                         GCC=True
                         shift # past argument
+                        ;;
+                -S|--assembly-code)
+                        ASM=True
+                        shift #past argument
+                        ;;
+
+                -C|--machine-code)
+                        OBJ=TRUE
+                        shift #past argument
                         ;;
                 -*|--*)
                         echo "Unknown option $1"
@@ -198,5 +211,6 @@ if [ "$GCC" == "True" ]; then # add gcc [inputfile] -o [outputfile]
         elif [ "$BITS" == "False" ]; then # add option for x32 compilation
 
                 gcc -m32 $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
+
 
 fi
