@@ -219,8 +219,23 @@ if [ "$GCC" == "True" ]; then # add gcc [inputfile] -o [outputfile]
                 gcc -S $OUTPUT_FILE.c -masm=intel -o $OUTPUT_FILE && echo ""
 
 
-        if [ "$OBJ" == "TRUE" ]; then
+        if [ "$OBJ" == "True" ]; then
 
                 gcc -c $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
 
-fi 
+elif [ "$GCC" == "False" ]; then # create condition where GCC options ASM & OBJ cannot be used
+
+        if [ "$ASM" == "True" ]; then
+
+                echo "WARNING: This option requires the -G option to use."
+                echo ""
+        
+        if [ "$OBJ" == "True" ]; then
+
+                echo "WARNING: This option requires the -G option to use."
+                echo ""
+
+fi
+
+
+
