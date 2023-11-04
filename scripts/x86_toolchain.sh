@@ -198,3 +198,5 @@ if [ "$GCC" == "True" ]; then # add gcc [inputfile] -o [outputfile]
         elif [ "$BITS" == "False" ]; then # add option for x32 compilation
 
                 gcc -m32 $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
+
+fi
