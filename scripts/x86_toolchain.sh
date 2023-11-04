@@ -65,8 +65,7 @@ while [[ $# -gt 0 ]]; do
                         ;;
                 -G|--gcc) # added the gcc argument
                         GCC=True
-                        shift 
-                        shift
+                        shift # past argument
                         ;;
                 -*|--*)
                         echo "Unknown option $1"
@@ -185,17 +184,17 @@ fi
 if [ "$GCC" == "True" ]; then # add gcc [inputfile] -o [outputfile] 
 
         echo "starting GCC..."
-        echo ""                 # tell user how to compile 32-bit programs
+        echo "For 32-bit compilation"                 # tell user how to compile 32-bit programs
         echo ""
 
         if [ "$VERBOSE" == "True" ]; then # add option for verbose gcc output
 
                 gcc -v $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
         
-        elif [ "$BITS" == "False" ]; then # add option for x64 compilation
+        elif [ "$BITS" == "True" ]; then # add option for x64 compilation
 
-                gcc $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
+                gcc -m64 $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
         
-        elif [ "$BITS" == "False" ]; then #add option for x32 compilation
+        elif [ "$BITS" == "False" ]; then # add option for x32 compilation
 
                 gcc -m32 $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
