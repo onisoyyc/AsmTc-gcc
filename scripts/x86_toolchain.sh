@@ -33,6 +33,8 @@ QEMU=False
 BREAK="_start"
 RUN=False
 GCC=False # add gcc in positional_args
+ASM=FALSE 
+OBJ=FALSE
 while [[ $# -gt 0 ]]; do
 	case $1 in
 		-g|--gdb)
@@ -68,6 +70,14 @@ while [[ $# -gt 0 ]]; do
 		-G|--gcc) # add gcc argument
             GCC=True
             shift # past argument
+            ;;
+		-S|--assembly-code)
+            ASM=True
+            shift #past argument
+            ;;
+		-C|--machine-code)
+            OBJ=True
+            shift #past argument
             ;;
 		-*|--*)
 			echo "Unknown option $1"
