@@ -17,6 +17,7 @@ if [ $# -lt 1 ]; then
 	echo "-q | --qemu                   Run executable in QEMU emulator. This will execute the program."
 	echo "-64| --x86-64                 Compile for 64bit (x86-64) system."
 	echo "-o | --output <filename>      Output filename."
+	echo "-G | --gcc                    Use GCC compiler" # this option enables gcc compiler
 
 	exit 1
 fi
