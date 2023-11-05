@@ -224,5 +224,17 @@ echo ""
     if [ "$OBJ" == "True" ]; then
 
         gcc -c $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
+	
+elif [ "$GCC" == "False" ]; then # create condition where GCC options ASM & OBJ cannot be used
+
+    if [ "$ASM" == "True" ]; then
+
+		echo "WARNING: This option requires the -G option to use."
+        echo ""
+        
+    if [ "$OBJ" == "True" ]; then
+
+        echo "WARNING: This option requires the -G option to use."
+        echo ""
 
 fi
