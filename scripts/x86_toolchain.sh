@@ -20,6 +20,7 @@ if [ $# -lt 1 ]; then
 	echo "-G | --gcc                    Use GCC compiler" # this option enables gcc compiler
 	echo "-S | --assembly-code          Output assembly (.s) file" #this option enables output of assembly code from a C file
     echo "-C | --machine-code           Output object(.o) file"      #this option will allow the user to get object code from a C file
+	echo "		For C++ compilation, simply use .cpp file extension"
 
 	exit 1
 fi
@@ -238,3 +239,10 @@ elif [ "$GCC" == "False" ]; then # create condition where GCC options ASM & OBJ 
         echo ""
 
 fi
+
+#I Propose adding a G++ compiler as well:
+
+if [[ $1 == *.cpp ]]; then
+
+	g++ -o $OUTPUT_FILE.cpp && echo ""
+
