@@ -99,6 +99,7 @@ if [ "$VERBOSE" == "True" ]; then
 	echo "	Output File = $OUTPUT_FILE"
 	echo "	Verbose = $VERBOSE"
 	echo "	64 bit mode = $BITS" 
+	echo "  GCC compiler = ${GCC}" # add the gcc arguments into verbose output
 	echo ""
 
 	echo "NASM started..."
