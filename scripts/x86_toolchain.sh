@@ -18,6 +18,8 @@ if [ $# -lt 1 ]; then
 	echo "-64| --x86-64                 Compile for 64bit (x86-64) system."
 	echo "-o | --output <filename>      Output filename."
 	echo "-G | --gcc                    Use GCC compiler" # this option enables gcc compiler
+	echo "-S | --assembly-code          Output assembly (.s) file" #this option enables output of assembly code from a C file
+    echo "-C | --machine-code           Output object(.o) file"      #this option will allow the user to get object code from a C file
 
 	exit 1
 fi
