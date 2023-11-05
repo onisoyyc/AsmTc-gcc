@@ -231,11 +231,7 @@ if [ "$GCC" == "True" ]; then # add gcc [inputfile] -o [outputfile]
 	if [ "$ASM" == "True" ]; then 
 
     	gcc -S $OUTPUT_FILE.c -masm=intel -o $OUTPUT_FILE && echo ""
-
-
-    if [ "$OBJ" == "True" ]; then
-
-        gcc -c $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
+fi
 	
 if [ "$ASM" == "True" ]; then  #Compile to assembly
 
