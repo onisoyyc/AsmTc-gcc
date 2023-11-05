@@ -232,7 +232,7 @@ elif [ "$GCC" == "False" ]; then # create condition where GCC options ASM & OBJ 
 		echo "WARNING: This option requires the -G option to use."
         echo ""
         
-    if [ "$OBJ" == "True" ]; then
+    elif [ "$OBJ" == "True" ]; then
 
         echo "WARNING: This option requires the -G option to use."
         echo ""
