@@ -77,7 +77,7 @@ while [[ $# -gt 0 ]]; do
                         ;;
 
                 -C|--machine-code)
-                        OBJ=TRUE
+                        OBJ=True
                         shift #past argument
                         ;;
                 -*|--*)
