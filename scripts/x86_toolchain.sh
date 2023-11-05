@@ -121,6 +121,15 @@ if [ "$VERBOSE" == "True" ]; then
 
 fi
 
+#I Propose adding a G++ compiler as well:
+
+if [[ $1 == *.cpp ]]; then
+
+	g++ -o $OUTPUT_FILE.cpp && echo "" # if input file ends with .cpp it will use g++
+									   # to create the executable, if not it will follow the existing logic for NASM
+
+else
+
 if [ "$BITS" == "True" ]; then
 
 	nasm -f elf64 $1 -o $OUTPUT_FILE.o && echo ""
@@ -239,10 +248,4 @@ elif [ "$GCC" == "False" ]; then # create condition where GCC options ASM & OBJ 
         echo ""
 
 fi
-
-#I Propose adding a G++ compiler as well:
-
-if [[ $1 == *.cpp ]]; then
-
-	g++ -o $OUTPUT_FILE.cpp && echo ""
 
