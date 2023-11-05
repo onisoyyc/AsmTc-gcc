@@ -216,4 +216,13 @@ echo ""
 
     	gcc -m32 $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
 
+	if [ "$ASM" == "True" ]; then 
+
+    	gcc -S $OUTPUT_FILE.c -masm=intel -o $OUTPUT_FILE && echo ""
+
+
+    if [ "$OBJ" == "True" ]; then
+
+        gcc -c $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
+
 fi
