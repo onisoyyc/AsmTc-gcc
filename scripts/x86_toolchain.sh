@@ -10,6 +10,8 @@ if [ $# -lt 1 ]; then
 	echo ""
 	echo "x86_toolchain.sh [ options ] <assembly filename> [-o | --output <output filename>]"
 	echo ""
+	echo "Autodetect .cpp file extension for G++ compiler"
+	echo ""
 	echo "-v | --verbose                Show some information about steps performed."
 	echo "-g | --gdb                    Run gdb command on executable."
 	echo "-b | --break <break point>    Add breakpoint after running gdb. Default is _start."
@@ -20,7 +22,7 @@ if [ $# -lt 1 ]; then
 	echo "-G | --gcc                    Use GCC compiler" # this option enables gcc compiler
 	echo "-S | --assembly-code          Output assembly (.s) file" #this option enables output of assembly code from a C file
     echo "-C | --machine-code           Output object(.o) file"      #this option will allow the user to get object code from a C file
-	echo "		For C++ compilation, simply use .cpp file extension"
+	echo ""
 
 	exit 1
 fi
