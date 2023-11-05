@@ -123,13 +123,13 @@ if [ "$VERBOSE" == "True" ]; then
 
 fi
 
-#I Propose adding a G++ compiler as well:
-
+#Propose adding simple G++ compiler as well:
+#start
 if [[ $1 == *.cpp ]]; then
 
 	g++ -o $OUTPUT_FILE.cpp && echo "" # if input file ends with .cpp it will use g++
 									   # to create the executable, if not it will follow the existing logic for NASM
-
+#end
 else
 
 if [ "$BITS" == "True" ]; then
@@ -237,17 +237,28 @@ if [ "$GCC" == "True" ]; then # add gcc [inputfile] -o [outputfile]
 
         gcc -c $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
 	
-elif [ "$GCC" == "False" ]; then # create condition where GCC options ASM & OBJ cannot be used
+if [ "$ASM" == "True" ]; then  #Compile to assembly
 
-    if [ "$ASM" == "True" ]; then
+    if [ "$GCC" == "False" ]; then
 
-		echo "WARNING: This option requires the -G option to use."
-        echo ""
-        
-    elif [ "$OBJ" == "True" ]; then
+		echo "WARNING: This option requires the -G option to use. Aborting"
+        exit 1 # Abort the scropt if -G was not switched on
+	else
+		gcc -S $OUTPUT_FILE.c -masm=intel -o $OUTPUT_FILE && echo ""
 
-        echo "WARNING: This option requires the -G option to use."
-        echo ""
+	fi
+fi
 
+if [ "$OBJ" == "True" ]; then #compile to object file
+
+	if [ "$GCC" == "False" ]; then
+		
+        echo "WARNING: This option requires the -G|--gcc option to use. Aborting"
+        exit 1 #Abort the script if -G was not switched on
+	
+	else
+		gcc -c $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
+	
+	fi
 fi
 
