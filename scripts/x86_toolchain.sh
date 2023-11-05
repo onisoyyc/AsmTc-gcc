@@ -228,16 +228,13 @@ if [ "$GCC" == "True" ]; then # add gcc [inputfile] -o [outputfile]
 
     	gcc -m32 $OUTPUT_FILE.c -o $OUTPUT_FILE && echo ""
 
-	if [ "$ASM" == "True" ]; then 
-
-    	gcc -S $OUTPUT_FILE.c -masm=intel -o $OUTPUT_FILE && echo ""
 fi
 	
 if [ "$ASM" == "True" ]; then  #Compile to assembly
 
     if [ "$GCC" == "False" ]; then
 
-		echo "WARNING: This option requires the -G option to use. Aborting"
+		echo "WARNING: The -S|--assembly code option requires the -G|--gcc option to use. Aborting..."
         exit 1 # Abort the scropt if -G was not switched on
 	else
 		gcc -S $OUTPUT_FILE.c -masm=intel -o $OUTPUT_FILE && echo ""
@@ -249,7 +246,7 @@ if [ "$OBJ" == "True" ]; then #compile to object file
 
 	if [ "$GCC" == "False" ]; then
 		
-        echo "WARNING: This option requires the -G|--gcc option to use. Aborting"
+        echo "WARNING: The -C|--machine-code option requires the -G|--gcc option to use. Aborting..."
         exit 1 #Abort the script if -G was not switched on
 	
 	else
